@@ -1,0 +1,934 @@
+/*======================> General <============================== */
+
+body {
+    font-family: "open sans",sans-serif;
+    background-color: #040404;
+    color: #fff;
+    position: relative;
+    background: transparent;
+    
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    background: #040404 url("../img/background/background.jpg") top right no-repeat;
+    background-size: cover;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    z-index: -1;
+}
+
+@media (min-width:1024px){
+    body::before{
+        background-attachment: fixed;
+    }
+}
+
+a{
+    color: #00c4cc;
+}
+a:hover {
+    color: #349feb;
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "Railewa", sans-serif;
+}
+
+/* =========================>Header Stars<============================== */
+
+#header {
+    transition: ease-in-out 0.3s;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    z-index: 997;
+    overflow-y: auto;
+  }
+
+#header * {
+    transition: ease-in-out 0.3s ;
+}
+
+#header h1 {
+    position: relative;
+    font-size: 3rem;
+    margin: 150px 0 0 50px;
+    padding: 0;
+    color: #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+    text-transform: uppercase;
+}
+#header h1::before {
+    content: attr(data-text);
+    position: absolute;
+    font-size: 3rem;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #00c4cc;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #00c4cc;
+    overflow: hidden;
+    animation: animate  10s linear infinite;
+}
+
+@keyframes animate  {
+    0%, 10%, 100% {
+        width: 0%;
+    }
+
+    70% {
+        width: 85%;
+    }
+}
+
+
+#header p{
+    margin-top: 10px;
+    margin-left: 50px;
+    font-size: 1.3rem;
+}
+/* ====================>Social starts<=============================== */
+
+#header .social-link {
+    margin-top: 1rem;
+    display: flex;
+    margin-left: 50px;
+}
+
+#header .social-link a {
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    line-height: 1;
+    margin-right: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+#header .social-link a:hover{
+    background: #349feb;
+}
+
+/* ===========================>>Social ends<<================================= */
+
+/* ======================>make it responsive start<=============================== */
+
+@media (max-width:992px){
+      #header h1, #header h1::before{
+          font-size: 1.5rem;
+          margin: 0;
+      }
+      #header p{
+          font-size: 1.3rem;
+          margin: 0;
+      }
+      #header .social-link {
+          margin-left: 0;
+          margin-top: 0.9rem;
+      }
+      #header .container{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 120px;
+      }
+
+      @keyframes animate {
+    
+        70% {
+            width: 100%;
+        }
+    }
+}
+/*=============================> make it responsive ends<=============================== */
+
+/*======================> Navigation Menu  start <=====================*/
+
+.nav-menu ul {
+    display: flex;
+    margin-left: 50px;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu ul li + li {
+    margin-left: 2rem;
+}
+
+.nav-menu a {
+    display: block;
+    position: relative;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-top: 1.1rem;
+}
+
+/* ==========================> setelah <===========================*/
+.nav-menu a::before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0.1rem;
+    bottom: -0.2rem;
+    left: 0;
+    background-color: #00c4cc;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+
+.nav-menu a:hover::before,
+.nav-menuli:hover > a::before,
+.nav-menu .active > a::before {
+    visibility: visible;
+    width: 25px;
+}
+
+.nav-menu a:hover,
+.nav-menu .active > a,
+.nav-menu li:hover > a {
+    color: #fff;
+    text-decoration: none;
+}
+/* ======================>Navigation Menu  ends<=============================*/
+
+/* =======================>Make for mobile starts<============================*/
+
+.mobile-nav-toggle {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 9998;
+    border: 0;
+    background: none;
+    font-size: 24px;
+    transition: all 0.4s;
+    outline: none !important;
+    line-height: 1;
+    cursor: pointer;
+    text-align: right;
+}
+
+
+.mobile-nav-toggle i {
+    color: #349feb;
+}
+
+.mobile-nav {
+    position: fixed;
+    top : 55px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    z-index: 9999;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.7);
+    transition: ease-in-out 0s;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 10px;
+    padding: 10px 0;
+    border: 10px solid rgba(255, 255, 255, 0.12);
+}
+  
+.mobile-nav * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mobile-nav-active {
+    overflow:hidden;
+}
+
+.mobile-nav-active .mobile-nav {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav a {
+    display: block;
+    position: relative;
+    color: #349feb;
+    padding: 10px 20px ;
+    font-weight: 600;
+    outline: none;
+}
+
+.mobile-nav a:hover, .mobile-nav .active > a, .mobile-nav li:hover > a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.mobile-nav-overly {
+    width: 100%;
+    height: 100%;
+    z-index: 9997;
+    top:0;
+    left: 0;
+    position: fixed;
+    background: rgba(9, 9, 9, 0.6);
+    overflow: hidden;
+    display: none;
+    transition: ease-in-out 0.2;
+}
+
+.mobile-nav-active .mobile-nav-toggle i {
+    color: #fff;
+}
+/* ========================>Make for mobile ends<==============================*/
+
+#header.header-top {
+    height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+  }
+  
+  #header.header-top .social-link, #header.header-top .cube, #header.header-top p {
+    display: none;
+  }
+  
+  #header.header-top h1 {
+   display: none;
+  }
+  
+  #header.header-top .container {
+    display: flex;
+    align-items: center;
+  }
+  
+  #header.header-top .nav-menu {
+    margin: 0;
+  }
+  
+@media (max-width: 768px) {
+    #header.header-top {
+      height: 60px;
+    }
+    #header.header-top h1 {
+      font-size: 26px;
+    }
+  }
+/*=========================> Header Ends <======================== */
+
+ 
+/* ============> Section About  start <====================== */
+
+section{
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    top: 140px;
+    bottom: 100%;
+    opacity: 0;
+    transition: ease-in-out 0.4s;
+    z-index: 2;
+}
+
+section.section-show{
+    top: 100px;
+    bottom: auto;
+    opacity: 1;
+    padding-bottom: 45px;
+}
+
+section .container{
+    padding: 20px;
+}
+
+
+@media (max-width: 768px){
+    section{
+        top: 120px;
+    }
+
+    section.section-show{
+        top: 80px;
+    }
+}
+
+.section-title h2 {
+    font-size: 14px;
+    font-weight: 500;
+    padding: -15px 0 10px 0;
+    line-height: 1px;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00c4cc;
+    font-family: "poppins", sans-serif;
+    
+}
+
+.section-title h2::after{
+    content: "";
+    width: 120px;
+    height: 2px;
+    display: inline-block;
+    background: #00c4cc;
+    margin: 4px 10px;
+}
+
+/* =====================================>About Me starts <============================== */
+.about-me .row h1 {
+    position: relative;
+    font-size: 3rem;
+    padding: 0;
+    color: #252839;
+    -webkit-text-stroke: 0.3vw #383d52;
+    text-transform: uppercase;
+}
+.about-me .row h1::before {
+    content: attr(data-text);
+    position: absolute;
+    font-size: 3rem;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #00c4cc;
+    -webkit-text-stroke: 0vw #383d52;
+    border-right: 2px solid #00c4cc;
+    overflow: hidden;
+    animation: animate  10s linear infinite;
+}
+
+
+.about-me .content h3 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #00c4cc;
+}
+
+.about-me .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-me .content ul li {
+    padding-bottom: 10px;
+}
+
+.about-me .content ul i {
+    font-size: 20px;
+    padding-right: 2px;
+    color: #00c4cc;
+}
+
+@media (max-width: 768px) {
+    .about-me h1, .about-me h1::before {
+        font-size: 25px;
+    }
+
+    
+    @keyframes animate {
+
+        70%, 90% {
+            width: 100%;
+        }
+    }
+}
+/* ============== minat stars ================== */
+
+.interests .icon-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: ease-in-out 0.3s;
+}
+
+.interests .icon-box i {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.interests .icon-box h3 {
+    font-weight: 700;
+    margin: 0;
+    padding: 10px;
+    line-height: 1;
+    font-size: 14px;
+    color: #fff;
+}
+
+.interests .icon-box:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid transparent;
+}
+
+/* ============== minat ends ================== */
+
+/* =====================================>About Me ends <======  ========================= */
+
+/* ============> Section About ends <====================== */
+
+/* ============> education <======================== */
+
+/* EDUCATION STARTS */
+.services  .card {
+    margin-top: 20px;
+    position: relative;
+    height: 340px;
+    width: 420px;
+    display: block;
+    background: white;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+    transition: 0.4s linear;
+}
+.services  .card:hover {
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  }
+.services  .card .image {
+    background: black;
+    overflow: hidden;
+}
+  
+.services  .image img {
+    height: 100%;
+    width: 100%;
+    transition: 0.3s;
+}
+  
+.services  .card.active .image img {
+    opacity: 0.6;
+    transform: scale(1.1);
+}
+.services  .card .content {
+    position: absolute;
+    bottom: 0px;
+    background: white;
+    width: 100%;
+    text-align: center;
+    padding: 20px 30px;
+}
+  
+.services  .content .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+}
+  
+.services  .content .sub-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e74c3c;
+}
+  
+.services  .content p {
+      color: #666666;
+      font-size: 16px;
+      text-align: justify;
+      line-height: 1.8em;
+}
+  
+.services  .bottom button {
+    float: left;
+    padding: 7px 15px;
+    font-size: 17px;
+    background: #e74c3c;
+    color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transform: 0.3s ease;
+}
+  
+.services  .bottom button:hover {
+    transform: scale(0.9);
+    background: #e64533;
+}
+  
+.services .bottom  {
+    display: none;
+}
+/* EDUCATION END */
+
+.services .icon-box{
+    text-align: center;
+    background: #09203a;
+    transition: all ease-in-out 0.3s;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.services h5 {
+    font-weight: 700;
+    font-size: 20px;
+}  
+
+.services .icon-box p {
+    line-height: 20px;
+    font-size: 14px;
+
+}
+
+.services .icon-box:hover {
+    background: #042e5f;
+    border-color: #1c7d32;
+    
+}
+
+.services .row div a::before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0.1rem;
+    bottom: -0.2rem;
+    left: 0;
+    background-color: #00c4cc;
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.services .row div a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+.services .row div a::before{
+    visibility: visible;
+    width: 180px;
+    left: 20px;
+}
+
+@media (max-width : 768px) {
+    .services  .card {
+        width: 350px;
+        height: 300px;
+    }
+
+    .services .content .title {
+        font-size: 18px;
+        margin-top: -10px;
+    }
+    .services .content h4{
+        font-size: 18px;
+    }
+
+    .services .content p {
+        margin-bottom: 0px;
+    }
+    .services button {
+        margin-bottom: -4px;
+    }
+}
+/* ============> education ends <======================== */
+
+/* Sertifikat onlines start */
+
+.certi-in {
+	width: auto;
+	height: auto;
+	margin-left: 10px;
+}
+.certi-in-image img {
+	width: 350px;
+    border-radius: 20%;
+    position: relative;
+    z-index: 2;
+    border: 6px solid rgba(255, 255, 255, 0.12);
+}
+
+.certi-in-image h5{
+    text-align: center;
+}
+
+.certi-in-image a {
+    margin-left: 135px;
+}
+
+.owl-theme .owl-controls {
+	margin-top: 0;
+}
+
+.owl-theme .owl-controls .owl-page span {
+	background: #aaa !important;
+	opacity: 1 !important;
+	transition: .5s;
+}
+
+.owl-theme .owl-controls .owl-page.active span {
+	background: #fff !important;
+}
+
+@media (max-width: 768px){
+    .certi-in {
+	margin-left: 0px;
+    }
+    
+}
+
+@media (max-width: 992px) {
+    .certi-in-image img {
+        width: 220px;
+    }
+    .certi-in-image a {
+        margin-left: 80px;
+    }   
+}
+
+/* Sertifikat online ends*/
+
+
+
+/* ===========>Skill<=============== */
+.skill-in {
+	width: 200px; 
+    height: 100px;
+	margin-left: 20px;
+    background: #fff;
+    border-radius: 20%;
+}
+.skill-in-image img {
+    border-radius: 20%;
+    position: relative;
+    z-index: 2;
+    border: 6px solid black;
+    
+}
+
+@media (max-width: 992px) {
+    .skill-in-image img {
+        width: 220px;
+    }
+    .skill-in-image a {
+        margin-left: 80px;
+    }   
+}
+/* .skills .progress {
+    height: 50px;
+    display: block;
+    background: none;
+}
+  
+.skills .progress .skill {
+    padding: 0;
+    margin: 0 0 6px 0;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+}
+  
+.skills .progress .skill .val {
+    float: right;
+    font-style: normal;
+}
+  
+.skills .progress-bar-wrap {
+    background: rgba(255, 255, 255, 0.15);
+}
+  
+.skills .progress-bar {
+    width: 1px;
+    height: 10px;
+    transition: .9s;
+    background-color: #1c7d32;
+} */
+
+/* ===========> Contact <============ */
+
+.contact .box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2fr 1fr ;
+    grid-template-rows: 5fr 4fr;
+    grid-template-areas: 
+    "form info"
+    "form map";
+    grid-gap: 20px;
+    margin-top:20px ;
+    
+}
+
+.contact{
+    padding: 10px 10px 40px 10px;
+    box-shadow: 0 5px 35px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.contact h4 {
+    color: #00c4cc;
+    font-weight: 700;
+    font-size: 16px;
+
+}
+
+
+/*===============> form  <=======================*/
+.contact .form {
+    grid-area: form;
+    max-width: 700px;
+}
+
+.contact .form .text-box {
+    background: #fff;
+    color: #040404 ;
+    border: none;
+    width: calc(50% - 10px);
+    height: 50px;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.contact .form .text-box:first-child {
+    margin-right: 15px;
+}
+
+.contact textarea {
+    background: #fff;
+    color: #040404 ;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    min-height: 300px;
+    max-height: 500px;
+    resize: vertical ;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.contact .form .send-btn {
+    float: left;
+    background: #2e94e2;
+    color: #fff;
+    border: none;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: 0.3s;
+    transition-property: background;  
+}
+
+.contact .form .send-btn:hover {
+    background: #5082e3;
+}
+/* ========> info <============================= */
+.contact .info {
+    grid-area: info;
+    background: #fff;
+}
+.contact .info .infoBox div {
+    display: flex;
+    align-items: center;
+    
+}
+
+.contact .info .infoBox div span {
+    min-width: 30px;
+    height: 30px;
+    color: #fff;
+    background: #00c4cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -10px;
+}
+
+.contact .info .infoBox div p {
+    color: #040404;
+    font-size: 14px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.contact .info .infoBox div a {
+    color: #040404;
+    text-decoration: none;
+    font-size: 16px;
+    
+}
+
+.contact .infoBox .share {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.contact .infoBox .share a i {
+    font-size: 34px;
+    color: #040404;
+    margin-right: 15px;
+}
+
+.contact .infoBox .share a i:hover {
+    color: #00c4cc
+}
+/* ===========> Map <============================ */
+.contact .map {
+    grid-area: map;
+    background: #fff;
+}
+.contact .map {
+    padding: 0;
+}
+.contact .map iframe {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px){
+    .contact .box {
+        grid-template-columns: 1fr ;
+        grid-template-rows: auto;
+        grid-template-areas: 
+        "form" "info"
+        "map";
+        
+    }
+
+    .contact .form .text-box {
+        width: 100%;
+    }
+
+    .contact .map {
+        min-height: 300px;
+    }
+
+    .formBox .row50 {
+        display: flex;
+        gap: 0;
+        flex-direction: column;
+    }
+
+    .contact .inputBox {
+        width: 100%;
+        
+    }
+}
+/* ===========> Contact ends <============ */
